@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SOC Refresh & Keyword Monitor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="soc-container">
+    <!-- Header -->
+    <header class="soc-header">
+      <div class="brand">
+        <img src="icons/icon32.png" alt="SOC Shield" class="soc-logo">
+        <div>
+          <h1 class="soc-title">SOC MONITOR</h1>
+          <p class="soc-subtitle">Command Console</p>
+        </div>
+      </div>
+      <div id="statusBadge" class="status-indicator status-idle">
+        <span class="pulse-dot"></span>
+        <span id="statusText">IDLE</span>
+      </div>
+    </header>
+
+    <!-- Runtime Metrics Panel -->
+    <section class="panel metrics-panel">
+      <div class="metric">
+        <span class="metric-label">COUNTDOWN</span>
+        <span id="valCountdown" class="metric-val">--</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">REFRESHES</span>
+        <span id="valRefreshes" class="metric-val">0</span>
+      </div>
+      <div class="metric">
+        <span class="metric-label">MATCHES</span>
+        <span id="valMatches" class="metric-val">0</span>
+      </div>
+    </section>
+
+    <!-- Refresh Config -->
+    <section class="panel">
+      <div class="panel-header">SCHEDULE ENGINE</div>
+      <div class="form-row">
+        <label for="inputInterval">Interval (seconds)</label>
+        <input type="number" id="inputInterval" min="5" value="30" class="soc-input">
+      </div>
+      <div class="form-row">
+        <label for="selectRunMode">Mode</label>
+        <select id="selectRunMode" class="soc-select">
+          <option value="infinite">Infinite Loop</option>
+          <option value="finite">Finite Limit</option>
+        </select>
+      </div>
+      <div class="form-row" id="rowFiniteCount" style="display:none;">
+        <label for="inputFiniteCount">Max Refresh Count</label>
+        <input type="number" id="inputFiniteCount" min="1" value="10" class="soc-input">
+      </div>
+    </section>
+
+    <!-- Keyword Monitor Config -->
+    <section class="panel">
+      <div class="panel-header">KEYWORD DETECTION</div>
+      <div class="form-row">
+        <label for="inputKeyword">Target String</label>
+        <input type="text" id="inputKeyword" placeholder="e.g. CRITICAL, love, error" class="soc-input">
+      </div>
+      <div class="toggle-grid">
+        <label class="checkbox-label">
+          <input type="checkbox" id="chkEnableKeyword" checked> Enable Monitor
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="chkNotifyUser" checked> Desktop Alert
+        </label>
+      </div>
+      <div class="toggle-grid">
+        <label class="checkbox-label">
+          <input type="checkbox" id="chkCaseSensitive"> Case Sensitive
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" id="chkDomScope"> Search Raw DOM (HTML)
+        </label>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <div class="action-grid">
+      <button id="btnStart" class="btn btn-primary">START SESSION</button>
+      <button id="btnStop" class="btn btn-danger" disabled>HALT</button>
+    </div>
+
+    <!-- Error/Notice Bar -->
+    <div id="errorNotice" class="error-banner" style="display:none;"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+:root {
+  --bg-main: #070b14;
+  --bg-panel: #0d1527;
+  --border-cyan: #00f0ff33;
+  --cyan-bright: #00f0ff;
+  --cyan-glow: rgba(0, 240, 255, 0.4);
+  --pink-alert: #ff0055;
+  --text-primary: #e6edf3;
+  --text-muted: #8b949e;
+  --slate-idle: #334155;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 340px;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  overflow-x: hidden;
+  padding: 12px;
+}
+
+.soc-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Header */
+.soc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-cyan);
+  padding-bottom: 8px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.soc-logo {
+  width: 28px;
+  height: 28px;
+  filter: drop-shadow(0 0 5px var(--cyan-glow));
+}
+
+.soc-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--cyan-bright);
+}
+
+.soc-subtitle {
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Status Indicator */
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.status-idle {
+  background-color: var(--slate-idle);
+  color: #94a3b8;
+}
+
+.status-running {
+  background-color: rgba(0, 240, 255, 0.15);
+  border: 1px solid var(--cyan-bright);
+  color: var(--cyan-bright);
+  box-shadow: 0 0 8px var(--cyan-glow);
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Panels */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-cyan);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.panel-header {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--cyan-bright);
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+/* Metrics */
+.metrics-panel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  gap: 4px;
+}
+
+.metric-label {
+  display: block;
+  font-size: 8px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.metric-val {
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+  font-family: monospace;
+}
+
+/* Form inputs */
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+.form-row label {
+  font-size: 11px;
+  color: var(--text-primary);
+}
+
+.soc-input, .soc-select {
+  background: #050811;
+  border: 1px solid #1e293b;
+  border-radius: 4px;
+  color: #ffffff;
+  padding: 4px 6px;
+  font-size: 11px;
+  outline: none;
+  width: 130px;
+}
+
+.soc-input:focus, .soc-select:focus {
+  border-color: var(--cyan-bright);
+}
+
+.toggle-grid {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  accent-color: var(--cyan-bright);
+}
+
+/* Buttons */
+.action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.btn {
+  padding: 8px 0;
+  font-weight: 700;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--cyan-bright);
+  color: #030712;
+}
+
+.btn-primary:hover:not(:disabled) {
+  box-shadow: 0 0 10px var(--cyan-glow);
+}
+
+.btn-danger {
+  background: #1e293b;
+  color: var(--pink-alert);
+  border: 1px solid var(--pink-alert);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: var(--pink-alert);
+  color: #ffffff;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.error-banner {
+  background: rgba(255, 0, 85, 0.15);
+  border: 1px solid var(--pink-alert);
+  color: #ffb3c6;
+  padding: 6px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  text-align: center;
+}
